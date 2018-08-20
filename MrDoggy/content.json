@@ -1,0 +1,66 @@
+{
+  "Format": "1.4",
+    "ConfigSchema": {
+        "TopHat": {
+            "AllowValues": "true, false",
+            "Default": "false"
+        }
+    },
+  "Changes": [
+       // replaces the dog sprite
+       {
+          "Logname": "MrDoggySprite",
+          "Action": "Load",
+          "Target": "Animals/dog",
+          "FromFile": "assets/mrdoggy.png",
+          "When": {
+            "TopHat": "false"
+          }
+       },
+       {
+          "Logname": "MrDoggySpriteHat",
+          "Action": "Load",
+          "Target": "Animals/dog",
+          "FromFile": "assets/mrdoggyhat.png",
+          "When": {
+            "TopHat": "true"
+          }
+       },
+
+       // changes the dog icon from Cursors.xnb
+       {
+          "Logname": "RobotIcon",
+          "Action": "EditImage",
+          "Target": "LooseSprites/Cursors",
+          "FromFile": "assets/mrdoggyicon.png",
+          "FromArea": { "X": 0, "Y": 0, "Width": 20, "Height": 17 }, // optional, defaults to entire FromFile
+          "ToArea": { "X": 174, "Y": 192, "Width": 20, "Height": 17 } // optional, defaults to source size from top-left
+       },
+
+       // change dog pet event with Marnie to say "robot"
+       {
+          "Logname": "RobotEvent",
+          "Action": "EditData",
+          "Target": "Data/Events/Farm",
+          "When": {
+              "Language": "en"
+          },
+          "Entries": {
+             "897405/m 1000/t 600 930/d Mon Tue Thu Sat Sun/w sunny/h dog/H": "continue/64 15/farmer 64 15 2 Marnie 65 16 0 dog 63 16 2/faceDirection Dog 1/pause 500/animate Dog false false 120 20 21 22 23/pause 2000/speak Marnie \"Hello @!$h#$b#You see this robot here?\"/faceDirection Marnie 3/pause 400/showFrame Dog 26/playSound dog_bark/pause 200/showFrame Dog 23/pause 600/showFrame Dog 26/playSound dog_bark/pause 200/showFrame Dog 23/pause 1000/animate Dog false true 200 24 25/playSound dog_pant/pause 400/playSound dog_pant/pause 400/playSound dog_pant/pause 1200/faceDirection Marnie 0/speak Marnie \"I found it sitting outside the entrance to your farm! I think it's lost... and probably damaged. It seems to think it's a dog... poor thing.$s\"/pause 500/animate Dog false true 400 23 31/pause 1500/speak Marnie \"Hey, it seems to like this place! Hey, um.... Don't you think this farm could use a good robot dog?$h\"/catQuestion/pause 1000/faceDirection Marnie 3/speak Marnie \"Well,  %pet... You be a good pooch now... okay?\"/pause 500/stopAnimation Dog/showFrame Dog 26/playSound dog_bark/pause 200/showFrame Dog 23/pause 1000/globalFade/viewport -1000 -1000/end"
+          }
+       },
+
+       // will you adopt this robot?
+       {
+          "Logname": "RobotAdoption",
+          "Action": "EditData",
+          "Target": "Strings/StringsFromCSFiles",
+          "When": {
+              "Language": "en"
+          },
+          "Entries": {
+              "Event.cs.1243": "robot"
+          }
+       }
+    ]
+}

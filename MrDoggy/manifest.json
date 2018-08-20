@@ -1,0 +1,13 @@
+{
+   "Name": "Mr Doggy",
+   "Author": "tangeriney, deadduch",
+   "Version": "1.0.0",
+   "Description": "Replaces your dog with a Mr. Handy that thinks it's a dog!",
+   "UniqueID": "tangeriney.MrDoggy",
+   "MinimumApiVersion": "2.0",
+   "UpdateKeys": [],
+   "ContentPackFor": {
+      "UniqueID": "Pathoschild.ContentPatcher", // the ID of required mod
+      "MinimumVersion": "1.3.0" // optional
+   }
+}
